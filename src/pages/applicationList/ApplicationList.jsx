@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DataTable from '../../components/ui/table/DataTable.jsx';
 import PageHeader from '../../components/ui/pageHeader/PageHeader.jsx';
+import { getLoanApplications } from '../../API/application/applicationAPI.js';
 
 const ApplicationList = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [applications, setApplications] = useState([]);
+  const navigate = useNavigate();
 
-  const applications = [
-    {
-      srNo: 1,
-      applicationId: 'LOAN40002',
-      customerId: 'CUST100477',
-      fullName: 'Sneha Nair',
-      businessName: 'TechHive Solutions',
-      businessType: 'IT / Services',
-      loanType: 'Business Loan',
-      amountApplied: '₹50,00,000',
-      tenure: '7 Years',
-      interest: '10.75 %',
-      applicationDate: '2024-10-01',
-      status: 'Pending',
-    },
-    {
-      srNo: 2,
-      applicationId: 'LOAN40003',
-      customerId: 'CUST100478',
-      fullName: 'Arjun Verma',
-      businessName: 'GreenTech Innovations',
-      businessType: 'Energy',
-      loanType: 'Business Loan',
-      amountApplied: '₹75,00,000',
-      tenure: '5 Years',
-      interest: '9.50 %',
-      applicationDate: '2025-03-15',
-      status: 'Processed',
-    },
-    // Add other rows similarly...
-  ];
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const response = await getLoanApplications();
+        if (response?.items) {
+          const formattedApplications = response.items.map((item, index) => ({
+            srNo: index + 1,
+            applicationId: item._id,
+            fullName: item.applicant_name,
+            businessName: item.business_name,
+            businessType: item.business_type,
+            loanType: item.loan_type,
+            amountApplied: `₹${Number(item.loan_amount_applied).toLocaleString()}`,
+            tenure: `${item.loan_tenure} Years`,
+            interest: `${item.interest_rate} %`,
+            applicationDate: new Date(item.application_date).toLocaleDateString(),
+            status: 'Pending', // Default status
+          }));
+          setApplications(formattedApplications);
+        }
+      } catch (error) {
+        console.error('Error fetching applications:', error);
+      }
+    };
+
+    fetchApplications();
+  }, []);
 
   // Filter applications based on the search value
   const filteredApplications = applications.filter((application) =>
@@ -51,7 +51,6 @@ const ApplicationList = () => {
       body: (_rowData, options) => <span>{options.rowIndex + 1}</span>,
     },
     { field: 'applicationId', header: 'Application ID' },
-    { field: 'customerId', header: 'Customer ID' },
     { field: 'fullName', header: 'Full Name' },
     { field: 'businessName', header: 'Business Name' },
     { field: 'businessType', header: 'Business Type' },
@@ -75,7 +74,7 @@ const ApplicationList = () => {
       body: (rowData) => (
         <button
           style={{ cursor: 'pointer' }}
-          onClick={() => console.log(`Navigating to ${rowData.applicationId}`)}
+          onClick={() => navigate(`/application-review/${rowData.applicationId}`)}
         >
           <span className="smm smm-action text-white bg-[#0D4A84] rounded-full p-2"></span>
         </button>
