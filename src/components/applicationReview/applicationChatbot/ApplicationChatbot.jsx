@@ -101,7 +101,9 @@ const ApplicationChatbot = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col min-h-[78vh] border border-gray-400">
+    <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-gray-400"
+      style={{ height: "calc(100vh - 232px)" }}
+    >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
         {accordionData.map((item, index) => (
           <AccordionItem

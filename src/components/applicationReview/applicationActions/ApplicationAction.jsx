@@ -90,7 +90,8 @@ const ApplicationAction = ({ className }) => {
 
   return (
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm h-[78vh] overflow-y-auto flex flex-col ${className} border border-gray-400`}
+      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-gray-400`}
+      style={{ height: "calc(100vh - 232px)" }}
     >
       <h2 className="text-lg font-semibold text-gray-800 mb-4">Actions</h2>
       <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
