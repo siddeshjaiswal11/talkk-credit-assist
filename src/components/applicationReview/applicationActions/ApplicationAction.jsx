@@ -90,7 +90,8 @@ const ApplicationAction = ({ className }) => {
 
   return (
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm h-[78vh] overflow-y-auto flex flex-col ${className} border border-gray-400`}
+      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-gray-400`}
+      style={{ height: "calc(100vh - 232px)" }}
     >
       <h2 className="text-lg font-semibold text-gray-800 mb-4">Actions</h2>
       <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
@@ -99,7 +100,7 @@ const ApplicationAction = ({ className }) => {
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-semibold text-gray-800">{item.title}</h3>
               <div
-                className={`text-sm font-medium px-2 py-1 rounded-full text-${item.riskColor}`}
+                className={`text-sm px-2 py-1 rounded-full font-semibold text-${item.riskColor}`}
               >
                 {item.risk}
                 <span
@@ -132,13 +133,13 @@ const ApplicationAction = ({ className }) => {
                 </div>
                 <div className="flex justify-end gap-3 mt-4">
                   <button
-                    className="px-2 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="px-3 py-1 rounded-md border border-[#0b3e6f] text-[#0b3e6f] text-sm font-semibold transition-colors"
                     onClick={handleCancelComment}
                   >
                     Cancel
                   </button>
                   <button
-                    className="px-4 py- rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                    className="px-3 py-1 rounded-md bg-[#0b3e6f] text-white hover:bg-[#0b3e6f] text-sm font-semibold transition-colors"
                     onClick={() =>
                       handleSubmitComment(item, item.actionType, currentComment)
                     }
@@ -151,13 +152,13 @@ const ApplicationAction = ({ className }) => {
               // Original buttons visible
               <div className="flex justify-end gap-2">
                 <button
-                  className="px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-700 transition-colors"
+                  className="px-3 py-1 rounded-md bg-[#D50001] text-white hover:bg-red-700 text-sm font-semibold transition-colors"
                   onClick={() => handleActionClick(index)} // Pass index to show comment box
                 >
                   Restrict
                 </button>
                 <button
-                  className="px-2 py-1 rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors"
+                  className="px-3 py-1 rounded-md bg-[#399E5A] text-white hover:bg-green-700 text-sm font-semibold transition-colors"
                   onClick={() => handleActionClick(index)} // Pass index to show comment box
                 >
                   Proceed
