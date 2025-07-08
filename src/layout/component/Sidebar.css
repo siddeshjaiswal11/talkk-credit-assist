@@ -77,17 +77,13 @@
   }
   
   .nav-link:hover {
-    background-color: var(--primary);
+    background-color: #E7EDF3;
   }
   
   .nav-link:hover::after,
   .nav-link:hover::before {
     opacity: 1;
     visibility: visible;
-  }
-  
-  .nav-link:hover .nav-icon{
-    color: var(--white);
   }
   
   /* .nav-link.active {

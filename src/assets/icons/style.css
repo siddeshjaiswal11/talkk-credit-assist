@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.smm-search:before {
+  content: "\e941";
+}
+.smm-action:before {
+  content: "\e940";
+}
 .smm-thumbs-down:before {
   content: "\e93e";
 }

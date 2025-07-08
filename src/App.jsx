@@ -3,8 +3,8 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import routesNodes from "./router";
 import Layout from "./layout/Layout";
-import "./assets/css/global.css";
 import "./assets/icons/style.css";
+import "./assets/css/global.css";
 
 
 const App = () => {
