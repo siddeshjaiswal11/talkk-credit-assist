@@ -22,7 +22,7 @@ const ApplicationReview = () => {
   }, [])
 
   return (
-    <div className="min-h-screen font-inter flex flex-col">
+    <div className="font-inter flex flex-col">
       <Header />
 
       <div className="flex flex-col lg:flex-row gap-4 p-4 par-1" style={{ height: "calc(100vh - 200px)", overflow: "hidden" }}>
