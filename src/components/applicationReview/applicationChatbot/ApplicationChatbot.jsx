@@ -7,7 +7,7 @@ const ApplicationChatbot = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false); // Still useful for a brief "typing" effect
   const [openAccordionIndex, setOpenAccordionIndex] = useState(0); // State to manage open accordion item
-
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const accordionData = [
     {
       title: "Company Financial Agent",
@@ -71,34 +71,39 @@ const ApplicationChatbot = () => {
     },
   ];
 
-  const handleSendMessage = () => {
-    if (input.trim() === "") return;
+  const handleSendMessage = async ({message}) => {
+    try {
+      let url = `${baseURL}/api/v1/chat_stream/${encodeURIComponent(message)}`;
+      if (applicationId) {
+        url += `?checkpoint_id=${encodeURIComponent(applicationId)}`;
+      }
 
-    const newMessage = {
-      id: Date.now(), // Simple unique ID for local messages
-      text: input,
-      sender: "user",
-      timestamp: new Date().toISOString(),
-    };
+      const eventSource = new EventSource(url, { withCredentials: true });
+      console.log("Connecting to SSE at:", url);
 
-    // Add user message to local state
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
-    setInput("");
-    setLoading(true); // Simulate loading for a brief moment
-
-    // Simulate a "bot" response after a short delay
-    setTimeout(() => {
-      const botResponseText = `You said: "${newMessage.text}". This is a simple echo response.`;
-      const botMessage = {
-        id: Date.now() + 1,
-        text: botResponseText,
-        sender: "model",
-        timestamp: new Date().toISOString(),
+      eventSource.onmessage = async (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          console.log("Received event data:", data);
+          
+        } catch (error) {
+          console.log("Error parsing event data:", error, event.data);
+        }
       };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-      setLoading(false);
-    }, 1000); // 1 second delay
+
+      eventSource.onerror = (error) => {
+        eventSource.close();
+      };
+
+      eventSource.addEventListener("end", () => {
+        eventSource.close();
+      });
+    } catch (error) {
+      console.error("Error setting up EventSource:", error);
+    }
   };
+
+
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col min-h-[78vh] border border-gray-400">
