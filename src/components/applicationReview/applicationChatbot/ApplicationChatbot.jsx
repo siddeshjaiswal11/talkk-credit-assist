@@ -1,10 +1,75 @@
 import { useState } from "react";
+import AccordionItem from "../../utils/accordionItem/AccordionItem";
 
 const ApplicationChatbot = () => {
   // userId prop removed
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false); // Still useful for a brief "typing" effect
+  const [openAccordionIndex, setOpenAccordionIndex] = useState(0); // State to manage open accordion item
+
+  const accordionData = [
+    {
+      title: "Company Financial Agent",
+      content: (
+        <>
+          <div className="flex items-center text-green-600 font-medium mb-2">
+            <svg
+              className="w-5 h-5 mr-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+            Fetched company registration & financial filings from MCA
+          </div>
+          <ul className="list-disc list-inside text-sm text-gray-700 ml-4">
+            <li>ROC Registration: 2010</li>
+            <li>Paid-up Capital: ₹10 Cr</li>
+            <li>Last Filed Balance Sheets & Profit/Loss (FY21-23)</li>
+            <li className="flex items-center">
+              Active Status:{" "}
+              <svg
+                className="w-4 h-4 text-green-600 ml-1 mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              Compliant
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: "Director Intel Agent",
+      content: "Details about Director Intel Agent...",
+    },
+    {
+      title: "Credit Risk Agent",
+      content: "Details about Credit Risk Agent...",
+    },
+    { title: "Tax Data Agent", content: "Details about Tax Data Agent..." },
+    {
+      title: "Borrower Profile Agent",
+      content: "Details about Borrower Profile Agent...",
+    },
+    {
+      title: "Compliance & Fraud Check Agent",
+      content: "Details about Compliance & Fraud Check Agent...",
+    },
+  ];
 
   const handleSendMessage = () => {
     if (input.trim() === "") return;
@@ -37,56 +102,43 @@ const ApplicationChatbot = () => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col min-h-[78vh] border border-gray-400">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Company Financial Agent
-        </h2>
-        <svg
-          className="w-5 h-5 text-gray-500"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 5l7 7-7 7"
-          ></path>
-        </svg>
+      <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
+        {accordionData.map((item, index) => (
+          <AccordionItem
+            key={index}
+            title={item.title}
+            isOpen={openAccordionIndex === index}
+            onClick={() => setOpenAccordionIndex(openAccordionIndex === index ? null : index)}
+          >
+            {item.content}
+          </AccordionItem>
+        ))}
       </div>
 
       {/* Chat messages display area */}
-      <div className="flex-1 overflow-y-auto pr-4 mb-4 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto mb-4 custom-scrollbar max-h-[30vh]">
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex items-start mb-4 ${
-              msg.sender === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex items-start bg-gray-100 rounded-lg mb-4 justify-start`}
           >
             {msg.sender === "model" && (
-              <div className="flex-shrink-0 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
-                <span className="font-semibold text-gray-700">R</span>
+              <div className="flex-shrink-0 w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center my-3 ml-3">
+                <span className="font-semibold">G</span>
               </div>
             )}
             <div
-              className={`p-3 rounded-lg max-w-[80%] ${
-                msg.sender === "user"
-                  ? "bg-blue-500 text-white rounded-br-none"
-                  : "bg-gray-100 text-gray-800 rounded-bl-none"
-              }`}
+              className={`p-3 rounded-lg w-full bg-gray-100 text-gray-900 font-semibold rounded-bl-none`}
             >
               <p className="text-sm">{msg.text}</p>
-              <span className="text-xs text-gray-400 mt-1 block">
+              {msg.sender != "model" && (<span className="text-xs text-gray-400 mt-1 block">
                 {msg.timestamp
                   ? new Date(msg.timestamp).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
                     })
                   : "Sending..."}
-              </span>
+              </span>)}
             </div>
           </div>
         ))}
