@@ -1,7 +1,7 @@
 const routes = {
     home: "/",
     applicationList: "/application-list",
-    applicationReview: "/application-review/:id"
+    applicationReview: "/application-review"
 }
 
 export default routes;
