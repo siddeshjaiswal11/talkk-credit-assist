@@ -73,9 +73,9 @@ const ApplicationList = () => {
       header: 'Action',
       body: (rowData) => (
         <button
-          style={{ cursor: 'pointer' }}
-          onClick={() => navigate(`/application-review/${rowData.applicationId}`)}
-        >
+        style={{ cursor: 'pointer' }}
+        onClick={() => navigate(`/application-review?applicationId=${rowData.applicationId}`)}
+      >
           <span className="smm smm-action text-white bg-[#0D4A84] rounded-full p-2"></span>
         </button>
       ),

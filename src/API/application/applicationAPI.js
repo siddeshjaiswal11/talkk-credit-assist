@@ -9,6 +9,13 @@ export const getLoanApplications = () => {
     })
 }
 
+export const getParticularLoanApplications = (id) => {
+    return apiWrapper({
+        url: `${authURL}loan_application/${id}`,
+        method: "GET",
+    })
+}
+
 export const resetPassword = (email, newPassword) => {
     return apiWrapper({
         url: `${authURL}reset-password`,
