@@ -4,21 +4,27 @@ import ApplicationDetail from "../../components/applicationReview/applicationDet
 import ApplicationAction from "../../components/applicationReview/applicationActions/ApplicationAction";
 import ApplicationChatbot from "../../components/applicationReview/applicationChatbot/ApplicationChatbot";
 import ApplicationDocuments from "../../components/applicationReview/applicationDocuments/ApplicationDocument";
-import { getLoanApplications } from "../../API/application/applicationAPI";
+import { getLoanApplications, getParticularLoanApplications } from "../../API/application/applicationAPI";
+import { useLocation } from "react-router-dom";
 
 const ApplicationReview = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const applicationId = queryParams.get("applicationId"); // Retrieve applicationId from query params
+
+  console.log("Application ID:", applicationId);
 
   useEffect(() => {
-    const fetchApplications = async () => {
+    const fetchParticularApplications = async () => {
       try {
-        const response = await getLoanApplications();
-        console.log("Fetched applications:", response);
+        const response = await getParticularLoanApplications(applicationId);
+        console.log("Fetched particular applications:", response);
       } catch (error) {
         console.error("Error fetching applications:", error);
       }
     };
 
-    fetchApplications();
+    fetchParticularApplications();
   }, [])
 
   return (
