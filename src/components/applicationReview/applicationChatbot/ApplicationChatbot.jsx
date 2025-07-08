@@ -71,11 +71,11 @@ const ApplicationChatbot = () => {
     },
   ];
 
-  const handleSendMessage = async ({message}) => {
+  const handleSendMessage = async (message) => {
     try {
-      let url = `${baseURL}/api/v1/chat_stream/${encodeURIComponent(message)}`;
+      let url = `${baseURL}/api/v1/chat_stream/${message}`;
       if (applicationId) {
-        url += `?checkpoint_id=${encodeURIComponent(applicationId)}`;
+        url += `?checkpoint_id=${applicationId}`;
       }
 
       const eventSource = new EventSource(url, { withCredentials: true });
@@ -178,14 +178,14 @@ const ApplicationChatbot = () => {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
-              handleSendMessage();
+              handleSendMessage(input);
             }
           }}
           disabled={loading}
         />
         <button
           className="bg-blue-600 text-white p-3 rounded-r-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          onClick={handleSendMessage}
+          onClick={() => handleSendMessage(input)}
           disabled={loading}
         >
           <svg
