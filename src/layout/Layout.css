@@ -1,0 +1,17 @@
+.main-layout {
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #F3F7FD;
+}
+
+.layout-container {
+    margin-top: 70px;
+    margin-left: 95px;
+    min-height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    overflow: auto;
+    margin-right: 10px;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+}

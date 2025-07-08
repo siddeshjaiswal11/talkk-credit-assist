@@ -1,0 +1,317 @@
+@font-face {
+  font-family: 'smm';
+  src: url('./fonts/smm.eot?hwwta7');
+  src: url('./fonts/smm.eot?hwwta7#iefix') format('embedded-opentype'),
+    url('./fonts/smm.ttf?hwwta7') format('truetype'),
+    url('./fonts/smm.woff?hwwta7') format('woff'),
+    url('./fonts/smm.svg?hwwta7#smm') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.smm {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'smm' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.smm-thumbs-down:before {
+  content: "\e93e";
+}
+.smm-thumbs-up:before {
+  content: "\e93f";
+}
+.smm-account:before {
+  content: "\e93c";
+}
+.smm-car:before {
+  content: "\e900";
+}
+
+.smm-child-head:before {
+  content: "\e901";
+}
+
+.smm-drumstick:before {
+  content: "\e902";
+}
+
+.smm-balloons:before {
+  content: "\e903";
+}
+
+.smm-settings:before {
+  content: "\e904";
+}
+
+.smm-cheese:before {
+  content: "\e905";
+}
+
+.smm-backpack:before {
+  content: "\e906";
+
+}
+
+.smm-asterik:before {
+  content: "\e907";
+
+}
+
+.smm-glasses:before {
+  content: "\e908";
+
+}
+
+.smm-call-history:before {
+  content: "\e909";
+
+}
+
+.smm-palette:before {
+  content: "\e90a";
+
+}
+
+.smm-flag:before {
+  content: "\e90b";
+
+}
+
+.smm-chart-tree:before {
+  content: "\e90c";
+
+}
+
+.smm-shopping-cart:before {
+  content: "\e90d";
+
+}
+
+.smm-fish:before {
+  content: "\e90e";
+
+}
+
+.smm-calendar:before {
+  content: "\e90f";
+
+}
+
+.smm-disco-ball:before {
+  content: "\e910";
+
+}
+
+.smm-chart-set-theory:before {
+  content: "\e911";
+
+}
+
+.smm-bike:before {
+  content: "\e912";
+
+}
+
+.smm-shopping-bag:before {
+  content: "\e913";
+
+}
+
+.smm-film:before {
+  content: "\e914";
+
+}
+
+.smm-envelope-open:before {
+  content: "\e915";
+
+}
+
+.smm-chart-pie-alt:before {
+  content: "\e916";
+
+}
+
+.smm-butterfly:before {
+  content: "\e917";
+
+}
+
+.smm-beer:before {
+  content: "\e918";
+
+}
+
+.smm-shop:before {
+  content: "\e919";
+
+}
+
+.smm-bulb:before {
+  content: "\e91a";
+
+}
+
+.smm-trophy:before {
+  content: "\e91b";
+
+}
+
+.smm-building:before {
+  content: "\e91c";
+
+}
+
+.smm-music:before {
+  content: "\e91d";
+
+}
+
+.smm-basketball:before {
+  content: "\e91e";
+
+}
+
+.smm-bug:before {
+  content: "\e91f";
+
+}
+
+.smm-fox:before {
+  content: "\e920";
+
+}
+
+.smm-picture:before {
+  content: "\e921";
+
+}
+
+.smm-brush:before {
+  content: "\e922";
+
+}
+
+.smm-music-alt:before {
+  content: "\e923";
+
+}
+
+.smm-barber-shop:before {
+  content: "\e924";
+
+}
+
+.smm-smile-wink:before {
+  content: "\e925";
+
+}
+
+.smm-guitar:before {
+  content: "\e926";
+
+}
+
+.smm-bank:before {
+  content: "\e927";
+
+}
+
+.smm-alarm-clock:before {
+  content: "\e928";
+
+}
+
+.smm-computer:before {
+  content: "\e929";
+
+}
+
+.smm-smartphone:before {
+  content: "\e92a";
+
+}
+
+.smm-pulse:before {
+  content: "\e92b";
+
+}
+
+.smm-briefcase:before {
+  content: "\e92c";
+
+}
+
+.smm-user:before {
+  content: "\e92d";
+}
+
+.smm-folder:before {
+  content: "\e92e";
+
+}
+
+.smm-map:before {
+  content: "\e92f";
+
+}
+
+.smm-apple:before {
+  content: "\e930";
+
+}
+
+.smm-save:before {
+  content: "\e931";
+}
+
+.smm-list:before {
+  content: "\e932";
+}
+
+.smm-add-icon:before {
+  content: "\e933";
+}
+
+.smm-home:before {
+  content: "\e934";
+}
+
+.smm-bell:before {
+  content: "\e935";
+}
+
+.smm-right-arrow:before {
+  content: "\e936";
+}
+
+.smm-arrow-grow:before {
+  content: "\e937";
+}
+
+.smm-send:before {
+  content: "\e938";
+}
+
+.smm-double-left:before {
+  content: "\e939";
+}
+
+.smm-double-right:before {
+  content: "\e93a";
+}
+
+.smm-copy:before {
+  content: "\e93b";
+}

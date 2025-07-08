@@ -1,0 +1,122 @@
+.header {
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 14px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* height: 60px; */
+  
+  }
+  
+  .header-container {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-container {
+    flex: 0 0 auto;
+  }
+  
+  .logo {
+    height: 22px;
+    width: auto;
+  }
+  
+  .header-title {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .header-title h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  .header-right .smm-bell {
+    color: var(--icon-color);
+    position: relative;
+  }
+  
+  .notification {
+    position: relative;
+  }
+  
+  .notification::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 1px;
+    height: 6px;
+    width: 6px;
+    z-index: 9;
+    border-radius: 50%;
+    background: var(--red);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+  }
+  
+  .profile-image img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    border-radius: 50%;
+    padding: 8px 12px;
+    background-color: #ccc;
+  }
+  
+  .user-role {
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  .profile-dd {
+    width: 200px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px 15px;
+    position: absolute;
+    right: 0;
+    background: var(--white);
+    top: 46px;
+    cursor: pointer;
+  }
+  .profile-dd .profile-user{
+    padding: 10px 0;
+  }

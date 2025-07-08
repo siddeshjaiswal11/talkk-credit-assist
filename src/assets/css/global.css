@@ -1,0 +1,21 @@
+:root{
+    --primary : #F22E89;
+    --background : #F3F3F3;
+    --prompt-bg:#F2F2F2;
+    --prompt-icon-bg: #5C5C5C;
+    --nav-icon:#777777;
+    --white: #fff;
+    --black: #000;
+    --icon-color : #999999;
+    --red : #D50001;
+    --border-color : #939393;
+    
+    /* Form Colors */
+    --error-red: #dc3545;
+    --placeholder-gray: #9E9E9E;
+    --tag-bg: #F73D931A;
+    --tag-blue-bg: #e8f0fe;
+    --tag-blue-text: #1a73e8;
+    --sub-label-gray: #666;
+    --hover-gray: #F5F5F5;
+}
