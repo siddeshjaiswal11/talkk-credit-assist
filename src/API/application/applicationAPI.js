@@ -2,9 +2,9 @@ import apiWrapper from "../apiWrapper";
 
 const authURL = "/api/v1/"
   
-export const logout = () => {
+export const getLoanApplications = () => {
     return apiWrapper({
-        url: `${authURL}logout`,
+        url: `${authURL}loan_application`,
         method: "GET",
     })
 }

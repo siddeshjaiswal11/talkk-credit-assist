@@ -8,7 +8,7 @@ import ApplicationDocuments from "../../components/applicationReview/application
 const ApplicationReview = () => {
   return (
     // Outer container: takes full viewport height, uses flex-col to stack header and main content
-    <div className="min-h-screen font-inter flex flex-col border border-red-400">
+    <div className="min-h-screen font-inter flex flex-col">
       {/* Header Component */}
       <Header />
 
