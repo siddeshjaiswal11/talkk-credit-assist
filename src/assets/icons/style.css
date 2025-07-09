@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.smm-download:before {
+  content: "\e943";
+}
+.smm-check:before {
+  content: "\e944";
+}
 .smm-document:before {
   content: "\e942";
 }
@@ -39,6 +45,9 @@
 }
 .smm-thumbs-up:before {
   content: "\e93f";
+}
+.smm-cross:before {
+  content: "\e93d";
 }
 .smm-account:before {
   content: "\e93c";

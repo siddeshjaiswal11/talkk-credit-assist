@@ -10,12 +10,17 @@ import { useLocation } from "react-router-dom";
 const ApplicationReview = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const applicationId = queryParams.get("applicationId"); // Retrieve applicationId from query params
+  const applicationId = queryParams.get("applicationId");
 
   console.log("Application ID:", applicationId);
 
   useEffect(() => {
     const fetchParticularApplications = async () => {
+      if (!applicationId) {
+        console.error("Application ID is missing");
+        return;
+      }
+
       try {
         const response = await getParticularLoanApplications(applicationId);
         console.log("Fetched particular applications:", response);
@@ -25,7 +30,7 @@ const ApplicationReview = () => {
     };
 
     fetchParticularApplications();
-  }, [])
+  }, [applicationId]);
 
   return (
     <div className="font-inter flex flex-col">
