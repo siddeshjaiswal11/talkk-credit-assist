@@ -5,7 +5,8 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => {
         className="w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none"
         onClick={onClick}
       >
-        <span className="font-semibold text-gray-800">{title}</span>
+        <span className="font-semibold text-gray-800">{title?.replace(/_/g, " ")                   // convert underscores to spaces
+                  ?.replace(/\b\w/g, (c) => c.toUpperCase())}</span>
         <svg
           className={`w-5 h-5 text-gray-600 transform transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""

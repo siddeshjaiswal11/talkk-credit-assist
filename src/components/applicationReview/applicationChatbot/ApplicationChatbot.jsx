@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AccordionItem from "../../utils/accordionItem/AccordionItem";
 
-const ApplicationChatbot = ({ applicationId }) => {
+const ApplicationChatbot = ({ applicationId, accordionAgentLifeCycle }) => {
   // userId prop removed
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -99,44 +99,39 @@ const ApplicationChatbot = ({ applicationId }) => {
         try {
           const data = JSON.parse(event.data);
           console.log("Received event data:", data);
-      
-          setMessages((prevMessages) => {
-            const lastMsg = prevMessages[prevMessages.length - 1];
-      
-            if (
-              !lastMsg ||
-              lastMsg.sender !== "model"
-            ) {
-              // No previous message or previous one is finished:
-              return [
-                ...prevMessages,
-                {
-                  text: data.content,
-                  sender: "model",
+
+          if (data.type == "content") {
+            setMessages((prevMessages) => {
+              const lastMsg = prevMessages[prevMessages.length - 1];
+
+              if (!lastMsg || lastMsg.sender !== "model") {
+                // No previous message or previous one is finished:
+                return [
+                  ...prevMessages,
+                  {
+                    text: data.content,
+                    sender: "model",
+                    timestamp: new Date(),
+                  },
+                ];
+              } else {
+                // Append to the last message:
+                const updatedMsg = {
+                  ...lastMsg,
+                  text: lastMsg.text + data.content,
                   timestamp: new Date(),
-                },
-              ];
-            } else {
-              // Append to the last message:
-              const updatedMsg = {
-                ...lastMsg,
-                text: lastMsg.text + data.content,
-                timestamp: new Date(),
-              };
-      
-              return [
-                ...prevMessages.slice(0, -1),
-                updatedMsg,
-              ];
-            }
-          });
+                };
+
+                return [...prevMessages.slice(0, -1), updatedMsg];
+              }
+            });
+          }
         } catch (error) {
           console.log("Error parsing event data:", error, event.data);
         } finally {
           setLoading(false);
         }
       };
-      
 
       eventSource.onerror = (error) => {
         eventSource.close();
@@ -158,16 +153,16 @@ const ApplicationChatbot = ({ applicationId }) => {
       style={{ height: "calc(100vh - 232px)" }}
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
-        {accordionData.map((item, index) => (
+        {accordionAgentLifeCycle?.map((item, index) => (
           <AccordionItem
             key={index}
-            title={item.title}
+            title={item.agent_name}
             isOpen={openAccordionIndex === index}
             onClick={() =>
               setOpenAccordionIndex(openAccordionIndex === index ? null : index)
             }
           >
-            {item.content}
+            {item?.reasoning}
           </AccordionItem>
         ))}
       </div>
@@ -178,7 +173,9 @@ const ApplicationChatbot = ({ applicationId }) => {
           <>
             <div
               key={msg.id}
-              className={`flex items-start bg-gray-100 rounded-lg justify-start ${msg.sender === "user" ? "mb-1" : "mb-4"}`}
+              className={`flex items-start bg-gray-100 rounded-lg justify-start ${
+                msg.sender === "user" ? "mb-1" : "mb-4"
+              }`}
             >
               {msg.sender === "user" && (
                 <div className="flex-shrink-0 w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center my-3 ml-3">
@@ -186,7 +183,11 @@ const ApplicationChatbot = ({ applicationId }) => {
                 </div>
               )}
               <div
-                className={`py-3 ${msg.sender === "user" ? "bg-gray-100 font-semibold px-3" : "bg-white px-1"} rounded-lg w-full text-gray-900 rounded-bl-none`}
+                className={`py-3 ${
+                  msg.sender === "user"
+                    ? "bg-gray-100 font-semibold px-3"
+                    : "bg-white px-1"
+                } rounded-lg w-full text-gray-900 rounded-bl-none`}
               >
                 <p className="text-sm">{msg.text}</p>
               </div>
@@ -213,7 +214,7 @@ const ApplicationChatbot = ({ applicationId }) => {
             </div>
           </div>
         )}
-       <div ref={bottomRef} />
+        <div ref={bottomRef} />
       </div>
       {/* Message input area */}
       <div className="flex items-center border-t border-gray-200 pt-4">
