@@ -5,7 +5,8 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => {
         className="w-full flex justify-between items-center px-2 py-4 bg-[#F9F9F9] focus:outline-none"
         onClick={onClick}
       >
-        <span className={`font-semibold text-[#777] ${isOpen ? "text-[#000]" : ""}`}>{title}</span>
+        <span className={`font-semibold text-[#777] ${isOpen ? "text-[#000]" : ""}`}>{title?.replace(/_/g, " ")                   // convert underscores to spaces
+                  ?.replace(/\b\w/g, (c) => c.toUpperCase())}</span>
         <svg
           className={`w-5 h-5 text-[#777] transform transition-transform duration-200 -rotate-90 ${
             isOpen ? "-rotate-180 text-[#000]" : ""

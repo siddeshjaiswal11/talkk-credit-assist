@@ -16,17 +16,17 @@ export const getParticularLoanApplications = (id) => {
     })
 }
 
-export const resetPassword = (email, newPassword) => {
+export const getApplicationReviewSet = (data) => {
     return apiWrapper({
-        url: `${authURL}reset-password`,
+        url: `${authURL}loan_application/review`,
         method: "POST",
-        data: { email, newPassword }
+        data
     })
 }
 
-export const chatSessionRename = (id, data) => {
+export const addCommentOnReview = (id, data) => {
     return apiWrapper({
-      url: `${chatSessionURL}rename/${id}`,
+      url: `${authURL}review/${id}`,
       method: "PATCH",
       data,
     });
