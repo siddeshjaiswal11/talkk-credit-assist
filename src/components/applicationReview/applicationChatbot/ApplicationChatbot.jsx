@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AccordionItem from "../../utils/accordionItem/AccordionItem";
 
 const ApplicationChatbot = ({ applicationId }) => {
@@ -8,6 +8,7 @@ const ApplicationChatbot = ({ applicationId }) => {
   const [loading, setLoading] = useState(false); // Still useful for a brief "typing" effect
   const [openAccordionIndex, setOpenAccordionIndex] = useState(0); // State to manage open accordion item
   const baseURL = import.meta.env.VITE_BASE_URL;
+  const bottomRef = useRef(null);
   const accordionData = [
     {
       title: "Company Financial Agent",
@@ -70,6 +71,12 @@ const ApplicationChatbot = ({ applicationId }) => {
       content: "Details about Compliance & Fraud Check Agent...",
     },
   ];
+
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, loading]);
 
   const handleSendMessage = async (message) => {
     try {
@@ -206,8 +213,8 @@ const ApplicationChatbot = ({ applicationId }) => {
             </div>
           </div>
         )}
+       <div ref={bottomRef} />
       </div>
-
       {/* Message input area */}
       <div className=" relative">
         <input
