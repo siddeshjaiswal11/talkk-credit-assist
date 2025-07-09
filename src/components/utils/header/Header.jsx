@@ -8,7 +8,8 @@ const Header = () => {
      <div className="bg-white p-2 flex items-center gap-1 cursor-pointer">
       <span className="smm smm-right-arrow mr-2" onClick={() => navigate(-1)}></span>
       <div className="text-lg font-semibold">
-        <span className="text-gray-500">Applications / LOAN40002 /</span>
+        <span className="text-gray-500">Applications /</span>
+        <span className='font-semibold ml-1'>LOAN40002 /</span>
         <span className="font-semibold ml-1">TechHive Solutions</span>
       </div>
       </div>
