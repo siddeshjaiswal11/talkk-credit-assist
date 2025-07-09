@@ -21,7 +21,7 @@ const ApplicationDocuments = ({ className, applicationDataDoc = [], loading }) =
   return (
     // Add flex flex-col to the outer div so its children can manage height
     <div
-      className={`bg-white rounded-lg shadow-sm flex flex-col ${className}`}
+      className={`bg-white rounded-lg flex flex-col ${className}`}
     >
       {applicationDataDoc?.length > 0 && !loading ? (
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
