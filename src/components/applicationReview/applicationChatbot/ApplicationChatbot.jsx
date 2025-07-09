@@ -179,7 +179,7 @@ const ApplicationChatbot = ({ applicationId }) => {
                 </div>
               )}
               <div
-                className={`p-3 rounded-lg w-full bg-gray-100 text-gray-900 font-semibold rounded-bl-none`}
+                className={`py-3 ${msg.sender === "user" ? "bg-gray-100 font-semibold px-3" : "bg-white px-1"} rounded-lg w-full text-gray-900 rounded-bl-none`}
               >
                 <p className="text-sm">{msg.text}</p>
               </div>
