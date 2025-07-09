@@ -14,7 +14,7 @@ const ApplicationDocuments = ({ className }) => {
   return (
     // Add flex flex-col to the outer div so its children can manage height
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm flex flex-col ${className}`}
+      className={`bg-white rounded-lg shadow-sm flex flex-col ${className}`}
     >
       <h2 className="text-lg font-medium text-gray-800 mb-4">
         Documents ({documents.length})
@@ -28,9 +28,9 @@ const ApplicationDocuments = ({ className }) => {
           >
             {/* Render check or cross icon based on status */}
             {doc.status === "checked" ? (
-              <span className="smm smm-check text-green-500"></span>
+              <span className="smm smm-check rounded-full text-white p-[6px] text-xs bg-[#20C357]"></span>
             ) : (
-              <span className="smm smm-cross text-red-500"></span>
+              <span className="smm smm-cross rounded-full text-white p-[6px] text-xs bg-[#D50001]"></span>
             )}
             <span className="text-gray-700 flex-1">{doc.name}</span>
             {/* Render download icon only if the document is checked */}
