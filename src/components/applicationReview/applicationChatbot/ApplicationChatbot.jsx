@@ -147,7 +147,7 @@ const ApplicationChatbot = ({ applicationId }) => {
 
   return (
     <div
-      className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-gray-400"
+      className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-[#939393]"
       style={{ height: "calc(100vh - 232px)" }}
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">

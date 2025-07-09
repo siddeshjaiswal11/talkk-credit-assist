@@ -16,7 +16,7 @@ const ApplicationDocuments = ({ className }) => {
     <div
       className={`bg-white p-6 rounded-lg shadow-sm flex flex-col ${className}`}
     >
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">
+      <h2 className="text-lg font-medium text-gray-800 mb-4">
         Documents ({documents.length})
       </h2>
       {/* Add flex-1 and custom-scrollbar to the inner div to make it scrollable */}

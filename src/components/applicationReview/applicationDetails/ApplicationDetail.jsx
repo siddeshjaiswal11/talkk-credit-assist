@@ -15,7 +15,7 @@ const ApplicationDetail = () => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm max-h-[35vh] overflow-y-auto custom-scrollbar">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">Loan Information</h2>
+        <h2 className="text-lg font-medium text-gray-800">Loan Information</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-700">
         {Object.entries(loanDetails).map(([key, value]) => (

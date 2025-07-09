@@ -90,15 +90,15 @@ const ApplicationAction = ({ className }) => {
 
   return (
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-gray-400`}
+      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-[#939393]`}
       style={{ height: "calc(100vh - 232px)" }}
     >
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">Actions</h2>
+      <h2 className="text-lg font-medium text-gray-800 mb-4">Actions</h2>
       <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
         {actionItems.map((item, index) => (
           <div key={index} className="border border-gray-200 rounded-lg p-4">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="font-semibold text-gray-800">{item.title}</h3>
+              <h3 className="font-bold text-sm text-gray-800">{item.title}</h3>
               <div
                 className={`text-sm px-2 py-1 rounded-full font-semibold text-${item.riskColor}`}
               >
