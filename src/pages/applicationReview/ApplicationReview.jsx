@@ -36,7 +36,7 @@ const ApplicationReview = () => {
     <div className="font-inter flex flex-col">
       <Header />
 
-      <div className="flex flex-col lg:flex-row gap-4 p-4 par-1" style={{ height: "calc(100vh - 200px)", overflow: "hidden" }}>
+      <div className="flex flex-col lg:flex-row gap-4 par-1" style={{ height: "calc(100vh - 200px)", overflow: "hidden" }}>
        
         <div className="flex flex-col gap-4 w-full lg:w-1/3 h-full border border-[#939393] rounded-md">
           <ApplicationDetail className="flex-grow-[2] overflow-y-auto" />

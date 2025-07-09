@@ -148,7 +148,7 @@ const ApplicationChatbot = ({ applicationId }) => {
   return (
     <div
       className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-[#939393]"
-      style={{ height: "calc(100vh - 232px)" }}
+      style={{ height: "calc(100vh - 200px)" }}
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
         {accordionData.map((item, index) => (
@@ -209,10 +209,10 @@ const ApplicationChatbot = ({ applicationId }) => {
       </div>
 
       {/* Message input area */}
-      <div className="flex items-center border-t border-gray-200 pt-4">
+      <div className=" relative">
         <input
           type="text"
-          className="flex-1 p-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          className="w-[100%] py-[15px] px-[10px] rounded-lg border border-[#DFDFDF] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           placeholder="Ask me anything..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -224,27 +224,11 @@ const ApplicationChatbot = ({ applicationId }) => {
           disabled={loading}
         />
         <button
-          className="bg-blue-600 text-white p-3 rounded-r-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="absolute right-[10px] top-[50%] transform -translate-y-1/2"
           onClick={() => handleSendMessage(input)}
           disabled={loading}
         >
-          <svg
-            className="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            ></path>
-            <path
-              fillRule="evenodd"
-              d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <span className="smm smm-action bg-[#0D4A84] text-[#fff] rounded-full p-[10px]"></span>
         </button>
       </div>
     </div>

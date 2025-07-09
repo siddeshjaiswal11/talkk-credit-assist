@@ -90,11 +90,11 @@ const ApplicationAction = ({ className }) => {
 
   return (
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-[#939393]`}
-      style={{ height: "calc(100vh - 232px)" }}
+      className={`bg-white p-4 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-[#939393]`}
+      style={{ height: "calc(100vh - 200px)" }}
     >
       <h2 className="text-lg font-medium text-gray-800 mb-4">Actions</h2>
-      <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
+      <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar">
         {actionItems.map((item, index) => (
           <div key={index} className="border border-gray-200 rounded-lg p-4">
             <div className="flex justify-between items-center mb-2">
@@ -108,7 +108,7 @@ const ApplicationAction = ({ className }) => {
                 ></span>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+            <p className="text-sm text-gray-600 border-b-[1px] border-b-[#c9c9c9] pb-2">{item.description}</p>
 
             {commentInputActiveIndex === index ? (
               // Comment input box visible for this item
@@ -150,7 +150,7 @@ const ApplicationAction = ({ className }) => {
               </div>
             ) : (
               // Original buttons visible
-              <div className="flex justify-end gap-2">
+              <div className="flex justify-end gap-2 pt-2">
                 <button
                   className="px-3 py-1 rounded-md bg-[#D50001] text-white hover:bg-red-700 text-sm font-semibold transition-colors"
                   onClick={() => handleActionClick(index)} // Pass index to show comment box

@@ -13,7 +13,7 @@ const ApplicationDetail = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm max-h-[35vh] overflow-y-auto custom-scrollbar">
+    <div className="bg-white p-6 rounded-lg overflow-y-auto custom-scrollbar">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-medium text-gray-800">Loan Information</h2>
       </div>

@@ -1,14 +1,14 @@
 const AccordionItem = ({ title, children, isOpen, onClick }) => {
   return (
-    <div className="border border-gray-200 rounded-lg mb-2 overflow-hidden">
+    <div className="rounded-lg mb-2 overflow-hidden">
       <button
-        className="w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+        className="w-full flex justify-between items-center px-2 py-4 bg-[#F9F9F9] focus:outline-none"
         onClick={onClick}
       >
-        <span className="font-semibold text-gray-800">{title}</span>
+        <span className={`font-semibold text-[#777] ${isOpen ? "text-[#000]" : ""}`}>{title}</span>
         <svg
-          className={`w-5 h-5 text-gray-600 transform transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
+          className={`w-5 h-5 text-[#777] transform transition-transform duration-200 -rotate-90 ${
+            isOpen ? "-rotate-180 text-[#000]" : ""
           }`}
           fill="none"
           stroke="currentColor"
@@ -24,7 +24,7 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="p-4 bg-white border-t border-gray-200">{children}</div>
+        <div className="px-2 py-4 bg-[#F9F9F9]">{children}</div>
       )}
     </div>
   );
