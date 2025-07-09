@@ -1,16 +1,14 @@
 // ApplicationDocuments Component (formerly Documents)
 const ApplicationDocuments = ({ className }) => {
+
   const documents = [
-    "Udyam/MSME Registration Certificate.pdf",
-    "GST Certificate.pdf",
-    "MOA/AOA or Partnership Deed.pdf",
-    "ITRs (Last 2 Years).pdf",
-    "Bank Statements (Last 6 Months).pdf",
-    "Business Plan.pdf",
-    "Identity Proof (Applicant).pdf",
-    "Address Proof (Applicant).pdf",
-    "Collateral Documents.pdf",
-    "Credit Report.pdf",
+    { name: "Udyam/MSME Registration Certificate.pdf", status: "checked" },
+    { name: "GST Certificate.pdf", status: "unchecked" },
+    { name: "MOA/AOA or Partnership Deed.pdf", status: "checked" },
+    { name: "ITRs (Last 2 Years).pdf", status: "unchecked" },
+    { name: "Bank Statements (Last 6 Months).pdf", status: "checked" },
+    { name: "Business Plan.pdf", status: "unchecked" },
+    { name: "Identity Proof (Applicant).pdf", status: "unchecked" },
   ];
 
   return (
@@ -26,10 +24,19 @@ const ApplicationDocuments = ({ className }) => {
         {documents.map((doc, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 p-3 rounded-md hover:bg-gray-50 transition-colors cursor-pointer border border-gray-300 mr-2"
+            className="flex items-center gap-2 p-3 rounded-md hover:bg-gray-50 transition-colors cursor-pointer border border-gray-300"
           >
-            <span className="smm smm-document text-[#DF3753]"></span>
-            <span className="text-gray-700">{doc}</span>
+            {/* Render check or cross icon based on status */}
+            {doc.status === "checked" ? (
+              <span className="smm smm-check text-green-500"></span>
+            ) : (
+              <span className="smm smm-cross text-red-500"></span>
+            )}
+            <span className="text-gray-700 flex-1">{doc.name}</span>
+            {/* Render download icon only if the document is checked */}
+            {doc.status === "checked" && (
+              <span className="smm smm-download text-[#0D4A84]"></span>
+            )}
           </div>
         ))}
       </div>
