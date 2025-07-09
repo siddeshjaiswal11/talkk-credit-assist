@@ -219,7 +219,7 @@ const ApplicationChatbot = ({ applicationId }) => {
       <div className=" relative">
         <input
           type="text"
-          className="w-[100%] py-[15px] px-[10px] rounded-lg border border-[#DFDFDF] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          className="w-[100%] py-[15px] px-[10px] rounded-lg border border-[#DFDFDF] focus:outline-none focus:ring-2 focus:ring-[#0D4A84] text-sm"
           placeholder="Ask me anything..."
           value={input}
           onChange={(e) => setInput(e.target.value)}

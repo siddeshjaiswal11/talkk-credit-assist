@@ -96,7 +96,7 @@ const ApplicationAction = ({ className }) => {
       <h2 className="text-lg font-medium text-gray-800 mb-4">Actions</h2>
       <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar">
         {actionItems.map((item, index) => (
-          <div key={index} className="border border-gray-200 rounded-lg p-4">
+          <div key={index} className="border border-[#c9c9c9] rounded-lg p-4">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold text-sm text-gray-800">{item.title}</h3>
               <div
