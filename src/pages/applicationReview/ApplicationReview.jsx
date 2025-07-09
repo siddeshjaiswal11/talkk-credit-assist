@@ -4,7 +4,7 @@ import ApplicationDetail from "../../components/applicationReview/applicationDet
 import ApplicationAction from "../../components/applicationReview/applicationActions/ApplicationAction";
 import ApplicationChatbot from "../../components/applicationReview/applicationChatbot/ApplicationChatbot";
 import ApplicationDocuments from "../../components/applicationReview/applicationDocuments/ApplicationDocument";
-import { getLoanApplications, getParticularLoanApplications } from "../../API/application/applicationAPI";
+import { getParticularLoanApplications } from "../../API/application/applicationAPI";
 import { useLocation } from "react-router-dom";
 
 const ApplicationReview = () => {
@@ -48,7 +48,7 @@ const ApplicationReview = () => {
         </div>
 
         <div className="w-full lg:w-1/3 h-full overflow-hidden">
-          <ApplicationChatbot />
+          <ApplicationChatbot applicationId={applicationId} />
         </div>
       </div>
     </div>

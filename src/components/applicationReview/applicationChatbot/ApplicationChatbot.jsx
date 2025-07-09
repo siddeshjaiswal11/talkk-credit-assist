@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AccordionItem from "../../utils/accordionItem/AccordionItem";
 
-const ApplicationChatbot = () => {
+const ApplicationChatbot = ({ applicationId }) => {
   // userId prop removed
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -73,6 +73,8 @@ const ApplicationChatbot = () => {
 
   const handleSendMessage = async (message) => {
     try {
+      setInput("");
+      setLoading(true);
       let url = `${baseURL}/api/v1/chat_stream/${message}`;
       if (applicationId) {
         url += `?checkpoint_id=${applicationId}`;
@@ -81,15 +83,53 @@ const ApplicationChatbot = () => {
       const eventSource = new EventSource(url, { withCredentials: true });
       console.log("Connecting to SSE at:", url);
 
-      eventSource.onmessage = async (event) => {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: message, sender: "user", timestamp: new Date() },
+      ]);
+
+      eventSource.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
           console.log("Received event data:", data);
-          
+      
+          setMessages((prevMessages) => {
+            const lastMsg = prevMessages[prevMessages.length - 1];
+      
+            if (
+              !lastMsg ||
+              lastMsg.sender !== "model"
+            ) {
+              // No previous message or previous one is finished:
+              return [
+                ...prevMessages,
+                {
+                  text: data.content,
+                  sender: "model",
+                  timestamp: new Date(),
+                },
+              ];
+            } else {
+              // Append to the last message:
+              const updatedMsg = {
+                ...lastMsg,
+                text: lastMsg.text + data.content,
+                timestamp: new Date(),
+              };
+      
+              return [
+                ...prevMessages.slice(0, -1),
+                updatedMsg,
+              ];
+            }
+          });
         } catch (error) {
           console.log("Error parsing event data:", error, event.data);
+        } finally {
+          setLoading(false);
         }
       };
+      
 
       eventSource.onerror = (error) => {
         eventSource.close();
@@ -100,13 +140,14 @@ const ApplicationChatbot = () => {
       });
     } catch (error) {
       console.error("Error setting up EventSource:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-
-
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-gray-400"
+    <div
+      className="bg-white p-6 rounded-lg shadow-sm flex flex-col border border-gray-400"
       style={{ height: "calc(100vh - 232px)" }}
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
@@ -115,7 +156,9 @@ const ApplicationChatbot = () => {
             key={index}
             title={item.title}
             isOpen={openAccordionIndex === index}
-            onClick={() => setOpenAccordionIndex(openAccordionIndex === index ? null : index)}
+            onClick={() =>
+              setOpenAccordionIndex(openAccordionIndex === index ? null : index)
+            }
           >
             {item.content}
           </AccordionItem>
@@ -125,34 +168,38 @@ const ApplicationChatbot = () => {
       {/* Chat messages display area */}
       <div className="flex-1 overflow-y-auto mb-4 custom-scrollbar max-h-[30vh]">
         {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex items-start bg-gray-100 rounded-lg mb-4 justify-start`}
-          >
-            {msg.sender === "model" && (
-              <div className="flex-shrink-0 w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center my-3 ml-3">
-                <span className="font-semibold">G</span>
-              </div>
-            )}
+          <>
             <div
-              className={`p-3 rounded-lg w-full bg-gray-100 text-gray-900 font-semibold rounded-bl-none`}
+              key={msg.id}
+              className={`flex items-start bg-gray-100 rounded-lg justify-start ${msg.sender === "user" ? "mb-1" : "mb-4"}`}
             >
-              <p className="text-sm">{msg.text}</p>
-              {msg.sender != "model" && (<span className="text-xs text-gray-400 mt-1 block">
+              {msg.sender === "user" && (
+                <div className="flex-shrink-0 w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center my-3 ml-3">
+                  <span className="font-semibold">G</span>
+                </div>
+              )}
+              <div
+                className={`p-3 rounded-lg w-full bg-gray-100 text-gray-900 font-semibold rounded-bl-none`}
+              >
+                <p className="text-sm">{msg.text}</p>
+              </div>
+            </div>
+            {msg.sender == "user" && (
+              <span className="text-xs text-gray-400 my-1 block">
                 {msg.timestamp
                   ? new Date(msg.timestamp).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
                     })
                   : "Sending..."}
-              </span>)}
-            </div>
-          </div>
+              </span>
+            )}
+          </>
         ))}
         {loading && (
           <div className="flex justify-start items-start mb-4">
             <div className="flex-shrink-0 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
-              <span className="font-semibold text-gray-700">R</span>
+              <span className="font-semibold text-gray-700">G</span>
             </div>
             <div className="p-3 rounded-lg bg-gray-100 text-gray-800 rounded-bl-none">
               <p className="text-sm">Typing...</p>
@@ -160,13 +207,6 @@ const ApplicationChatbot = () => {
           </div>
         )}
       </div>
-
-      {/* User ID display - Removed as userId is not used */}
-      {/* {userId && (
-          <div className="text-xs text-gray-500 mb-2">
-            Your User ID: <span className="font-mono break-all">{userId}</span>
-          </div>
-        )} */}
 
       {/* Message input area */}
       <div className="flex items-center border-t border-gray-200 pt-4">
