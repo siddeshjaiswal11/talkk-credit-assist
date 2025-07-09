@@ -159,7 +159,10 @@ const ApplicationChatbot = ({
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
         {loader ? (
+          <>
+          <h1 className="font-semibold">Agent Lifecycle</h1>
           <ChatMessageLoader />
+          </>
         ) : (
           accordionAgentLifeCycle?.map((item, index) => (
             <AccordionItem

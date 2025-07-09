@@ -50,7 +50,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
       review_status: currentActionType == "Restrict" ? "restricted" : "resolved",
     }
 
-    await addCommentOnReview(item._id || 123, data)
+    await addCommentOnReview(item._id, data)
     const reviewSet =await getApplicationReviewSet(applicationData);
     setReviewSetData(reviewSet);
     console.log("Review Set:", reviewSet);
