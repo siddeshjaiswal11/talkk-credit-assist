@@ -6,15 +6,15 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => {
         onClick={onClick}
       >
         <span
-          className={`font-semibold text-[#777] ${isOpen ? "text-[#000]" : ""}`}
+          className={`font-semibold text-[#777] ${isOpen ? "text-black" : "text-gray-800"}`}
         >
           {title
             ?.replace(/_/g, " ") // convert underscores to spaces
-            ?.replace(/\b\w/g, (c) => c.toUpperCase())}
+            ?.replace(/\b\w/g, (c) => c.toUpperCase())}{" "}
         </span>
         <svg
-          className={`w-5 h-5 text-[#777] transform transition-transform duration-200 -rotate-90 ${
-            isOpen ? "-rotate-180 text-[#000]" : ""
+          className={`w-5 h-5 text-[#777] transform transition-transform duration-200 ${
+            isOpen ? "-rotate-180 text-black" : "-rotate-90 text-gray-800"
           }`}
           fill="none"
           stroke="currentColor"

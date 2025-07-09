@@ -10,49 +10,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
   const commentBoxRef = useRef(null); // Ref for the comment box to detect outside clicks
   const [reviewSetData, setReviewSetData] = useState(reviewData);
 
-  console.log("Review Data: ", reviewData);
-
-  const actionItems = [
-    {
-      title: "Low Credit Score",
-      description:
-        "Credit score below threshold. History of 2 write-offs and 90+ DPD in past 6 months.",
-      risk: "High Risk",
-      riskColor: "red-500",
-    },
-    {
-      title: "Low Credit Score",
-      description:
-        "Recent employment; salary credits only for 2 months. Needs manual validation.",
-      risk: "Moderate Risk",
-      riskColor: "orange-500",
-    },
-    {
-      title: "Low Credit Score",
-      description: "Cash flow irregular. Multiple overdrafts were detected.",
-      risk: "High Risk",
-      riskColor: "red-500",
-    },
-    {
-      title: "Pending Documents",
-      description: "Waiting for updated income proof from the applicant.",
-      risk: "Medium Risk",
-      riskColor: "yellow-500",
-    },
-    {
-      title: "High Debt-to-Income Ratio",
-      description:
-        "Applicant's current debt obligations are high relative to income.",
-      risk: "High Risk",
-      riskColor: "red-500",
-    },
-    {
-      title: "Incomplete KYC",
-      description: "Some KYC documents are missing or not properly verified.",
-      risk: "High Risk",
-      riskColor: "red-500",
-    },
-  ];
+  console.log("Review Data: ", reviewData)
 
   // Effect to handle clicks outside the comment box
   useEffect(() => {
@@ -135,7 +93,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
                   ></span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{item.message}</p>
+              <p className="text-sm text-gray-600 mb-4 break-all">{item.message}</p>
 
               {commentInputActiveIndex === index ? (
                 // Comment input box visible for this item

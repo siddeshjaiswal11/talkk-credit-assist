@@ -16,7 +16,7 @@ const ApplicationDetail = ({ applicationData = {} }) => {
 
   return (
     <div className="bg-white rounded-lg overflow-y-auto max-h-[40vh] custom-scrollbar border-b-[1px] border-b-[#c9c9c9] rounded-bl-none rounded-br-none">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium text-gray-800 mb-4">
           Loan Information
         </h2>
