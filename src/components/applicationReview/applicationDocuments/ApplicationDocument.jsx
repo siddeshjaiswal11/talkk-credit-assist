@@ -1,4 +1,6 @@
 // ApplicationDocuments Component (formerly Documents)
+import React from "react";
+import ChatMessageLoader from "../../ui/chatMessageLoader/ChatMessageLoader";
 const ApplicationDocuments = ({ className, applicationDataDoc = [], loading }) => {
   //   we receive as  "documents": {
   //     "aadhar_document": "https://ssm-talkk-dev.pocs.tech/a1c6be78e56a4373a50d3a576d87a14d.jfif",
@@ -28,9 +30,12 @@ const ApplicationDocuments = ({ className, applicationDataDoc = [], loading }) =
           Documents ({applicationDataDoc?.length})
         </h2>
       ) : (
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">
-          Documents <br></br>Loading Documents...
-        </h2>
+        <>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Documents <br></br>
+          </h2>
+          <ChatMessageLoader />
+        </>
       )}
       {/* Add flex-1 and custom-scrollbar to the inner div to make it scrollable */}
       <div className="flex flex-col gap-2 flex-1 overflow-y-auto custom-scrollbar max-h-[20vh]">

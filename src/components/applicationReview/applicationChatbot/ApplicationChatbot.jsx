@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import AccordionItem from "../../utils/accordionItem/AccordionItem";
+import ChatMessageLoader from "../../ui/chatMessageLoader/ChatMessageLoader";
 
 const ApplicationChatbot = ({
   applicationId,
@@ -158,7 +159,7 @@ const ApplicationChatbot = ({
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
         {loader ? (
-          <h1>Agent Lifecycle Loading...</h1>
+          <ChatMessageLoader />
         ) : (
           accordionAgentLifeCycle?.map((item, index) => (
             <AccordionItem

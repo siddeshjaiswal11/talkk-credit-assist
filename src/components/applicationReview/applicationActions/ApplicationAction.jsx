@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { addCommentOnReview } from "../../../API/application/applicationAPI";
+import ChatMessageLoader from "../../ui/chatMessageLoader/ChatMessageLoader";
 
 const ApplicationAction = ({ className, loading, reviewData = [], applicationData }) => {
   // State to manage which action item's comment input is active
@@ -74,7 +75,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
     >
       <h2 className="text-lg font-medium text-gray-800 mb-4">Actions</h2>
       {loading ? (
-        <h2>Loading Actions...</h2>
+        <ChatMessageLoader />
       ) : (
         <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
           {reviewData?.map((item, index) => (
