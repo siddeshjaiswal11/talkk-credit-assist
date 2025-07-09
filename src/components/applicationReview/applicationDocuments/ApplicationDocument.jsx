@@ -1,5 +1,5 @@
 // ApplicationDocuments Component (formerly Documents)
-const ApplicationDocuments = ({ className, applicationDataDoc = [] }) => {
+const ApplicationDocuments = ({ className, applicationDataDoc = [], loading }) => {
   //   we receive as  "documents": {
   //     "aadhar_document": "https://ssm-talkk-dev.pocs.tech/a1c6be78e56a4373a50d3a576d87a14d.jfif",
   //     "loan_application_document": "https://ssm-talkk-dev.pocs.tech/e21a2eeb66ed449bae39edd04a1ade75.pdf",
@@ -23,9 +23,13 @@ const ApplicationDocuments = ({ className, applicationDataDoc = [] }) => {
     <div
       className={`bg-white rounded-lg shadow-sm flex flex-col ${className}`}
     >
-      {applicationDataDoc?.length > 0 && (
+      {applicationDataDoc?.length > 0 && !loading ? (
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
           Documents ({applicationDataDoc?.length})
+        </h2>
+      ) : (
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          Documents <br></br>Loading Documents...
         </h2>
       )}
       {/* Add flex-1 and custom-scrollbar to the inner div to make it scrollable */}

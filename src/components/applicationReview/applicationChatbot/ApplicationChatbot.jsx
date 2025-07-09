@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import AccordionItem from "../../utils/accordionItem/AccordionItem";
 
-const ApplicationChatbot = ({ applicationId, accordionAgentLifeCycle }) => {
+const ApplicationChatbot = ({
+  applicationId,
+  accordionAgentLifeCycle,
+  loader
+}) => {
   // userId prop removed
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -153,18 +157,24 @@ const ApplicationChatbot = ({ applicationId, accordionAgentLifeCycle }) => {
       style={{ height: "calc(100vh - 200px)" }}
     >
       <div className="mb-4 max-h-[30vh] overflow-y-auto custom-scrollbar">
-        {accordionAgentLifeCycle?.map((item, index) => (
-          <AccordionItem
-            key={index}
-            title={item.agent_name}
-            isOpen={openAccordionIndex === index}
-            onClick={() =>
-              setOpenAccordionIndex(openAccordionIndex === index ? null : index)
-            }
-          >
-            {item?.reasoning}
-          </AccordionItem>
-        ))}
+        {loader ? (
+          <h1>Agent Lifecycle Loading...</h1>
+        ) : (
+          accordionAgentLifeCycle?.map((item, index) => (
+            <AccordionItem
+              key={index}
+              title={item.agent_name}
+              isOpen={openAccordionIndex === index}
+              onClick={() =>
+                setOpenAccordionIndex(
+                  openAccordionIndex === index ? null : index
+                )
+              }
+            >
+              {item?.reasoning}
+            </AccordionItem>
+          ))
+        )}
       </div>
 
       {/* Chat messages display area */}

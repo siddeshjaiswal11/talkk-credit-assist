@@ -10,6 +10,8 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
   const commentBoxRef = useRef(null); // Ref for the comment box to detect outside clicks
   const [reviewSetData, setReviewSetData] = useState(reviewData);
 
+  console.log("Review Data: ", reviewData);
+
   const actionItems = [
     {
       title: "Low Credit Score",
@@ -117,7 +119,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
         <h2>Loading Actions...</h2>
       ) : (
         <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
-          {actionItems?.map((item, index) => (
+          {reviewData?.map((item, index) => (
             <div key={index} className="border border-gray-200 rounded-lg p-4">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="font-bold text-sm text-gray-800">
@@ -126,13 +128,14 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
                 <div
                   className={`text-sm px-2 py-1 rounded-full font-semibold ${item.alert == "high_risk" ? "text-red-500" : item.alert == "medium_risk" ? "text-orange-500" : "text-yellow-500"}`}
                 >
-                  {item.alert}
+                  {item.alert?.replace(/_/g, " ")                   // convert underscores to spaces
+                  ?.replace(/\b\w/g, (c) => c.toUpperCase())}
                   <span
                     className={`ml-2 inline-block w-3 h-3 rounded-full ${item.alert == "high_risk" ? "bg-red-500" : item.alert == "medium_risk" ? "bg-orange-500" : "bg-yellow-500"}`}
                   ></span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+              <p className="text-sm text-gray-600 mb-4">{item.message}</p>
 
               {commentInputActiveIndex === index ? (
                 // Comment input box visible for this item

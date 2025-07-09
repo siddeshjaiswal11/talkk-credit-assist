@@ -29,7 +29,7 @@ const SidebarLayout = () => {
 
         </Link>
 
-        <Link 
+        {/* <Link 
           to="/application-review"
           className={`nav-link ${activeIcon === 'create' ? 'active' : ''}`}
           onClick={() => setActiveIcon('create')}
@@ -37,7 +37,7 @@ const SidebarLayout = () => {
         >
           <span className={`smm smm-add-icon nav-icon ${activeIcon === 'create' ? 'active' : 'inactive'}`}></span>
 
-        </Link>
+        </Link> */}
 
         {/* <Link 
           to="/account"

@@ -52,7 +52,7 @@ const ApplicationReview = () => {
        
         <div className="flex flex-col gap-4 w-full lg:w-1/3 h-full p-6 border border-gray-400 rounded-md">
           <ApplicationDetail className="flex-grow-[2] overflow-y-auto" applicationData={applicationData}/>
-          <ApplicationDocuments className="flex-grow-[1] overflow-y-auto" applicationDataDoc={reviewData?.documents_checklist}/>
+          <ApplicationDocuments className="flex-grow-[1] overflow-y-auto" loading={reviewDataLoading} applicationDataDoc={reviewData?.documents_checklist}/>
         </div>
 
         <div className="w-full lg:w-1/3 h-full overflow-y-auto">
@@ -60,7 +60,7 @@ const ApplicationReview = () => {
         </div>
 
         <div className="w-full lg:w-1/3 h-full overflow-hidden">
-          <ApplicationChatbot applicationId={applicationId} accordionAgentLifeCycle={reviewData?.agent_lifecycle}/>
+          <ApplicationChatbot applicationId={applicationId} loader={reviewDataLoading}accordionAgentLifeCycle={reviewData?.agent_lifecycle}/>
         </div>
       </div>
     </div>
