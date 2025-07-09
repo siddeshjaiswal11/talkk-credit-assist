@@ -21,7 +21,7 @@ const ApplicationDocuments = ({ className, applicationDataDoc = [] }) => {
   return (
     // Add flex flex-col to the outer div so its children can manage height
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm flex flex-col ${className}`}
+      className={`bg-white rounded-lg shadow-sm flex flex-col ${className}`}
     >
       {applicationDataDoc?.length > 0 && (
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
@@ -36,11 +36,19 @@ const ApplicationDocuments = ({ className, applicationDataDoc = [] }) => {
             className="flex items-center gap-2 p-3 rounded-md hover:bg-gray-50 transition-colors cursor-pointer border border-gray-300"
             onClick={() => window.open(doc?.file_url, "_blank")}
           >
+            {doc?.isVerified ? (
+              <span className="smm smm-check rounded-full text-white p-[6px] text-xs bg-[#20C357]"></span>
+            ) : (
+              <span className="smm smm-cross rounded-full text-white p-[6px] text-xs bg-[#D50001]"></span>
+            )}
             <span className="text-gray-700 flex-1">
               {doc?.document_name
                 .replace(/_/g, " ") // convert underscores to spaces
                 .replace(/\b\w/g, (c) => c.toUpperCase())}
             </span>
+            {doc?.isVerified && (
+              <span className="smm smm-download text-[#0D4A84]"></span>
+            )}
           </div>
         ))}
       </div>

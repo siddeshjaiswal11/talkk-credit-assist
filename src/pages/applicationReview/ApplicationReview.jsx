@@ -48,9 +48,9 @@ const ApplicationReview = () => {
     <div className="font-inter flex flex-col">
       <Header applicationName={applicationData?.business_name}/>
 
-      <div className="flex flex-col lg:flex-row gap-4 p-4 par-1" style={{ height: "calc(100vh - 200px)", overflow: "hidden" }}>
+      <div className="flex flex-col lg:flex-row gap-4 par-1" style={{ height: "calc(100vh - 200px)", overflow: "hidden" }}>
        
-        <div className="flex flex-col gap-4 w-full lg:w-1/3 h-full border border-gray-400 rounded-md">
+        <div className="flex flex-col gap-4 w-full lg:w-1/3 h-full p-6 border border-gray-400 rounded-md">
           <ApplicationDetail className="flex-grow-[2] overflow-y-auto" applicationData={applicationData}/>
           <ApplicationDocuments className="flex-grow-[1] overflow-y-auto" applicationDataDoc={reviewData?.documents_checklist}/>
         </div>

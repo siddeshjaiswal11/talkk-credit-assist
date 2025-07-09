@@ -109,8 +109,8 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
 
   return (
     <div
-      className={`bg-white p-6 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-[#939393]`}
-      style={{ height: "calc(100vh - 232px)" }}
+      className={`bg-white p-4 rounded-lg shadow-sm overflow-y-auto flex flex-col ${className} border border-[#939393]`}
+      style={{ height: "calc(100vh - 200px)" }}
     >
       <h2 className="text-lg font-medium text-gray-800 mb-4">Actions</h2>
       {loading ? (

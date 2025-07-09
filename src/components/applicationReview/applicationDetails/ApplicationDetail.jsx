@@ -15,9 +15,9 @@ const ApplicationDetail = ({ applicationData = {} }) => {
   console.log("applicationData: ", applicationData);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm max-h-[35vh] overflow-y-auto custom-scrollbar">
+    <div className="bg-white rounded-lg overflow-y-auto custom-scrollbar border-b-[1px] border-b-[#c9c9c9] rounded-bl-none rounded-br-none">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">
+        <h2 className="text-lg font-medium text-gray-800 mb-4">
           Loan Information
         </h2>
       </div>
