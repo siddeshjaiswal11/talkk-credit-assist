@@ -117,7 +117,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
         <h2>Loading Actions...</h2>
       ) : (
         <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
-          {reviewSetData?.map((item, index) => (
+          {actionItems?.map((item, index) => (
             <div key={index} className="border border-gray-200 rounded-lg p-4">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="font-bold text-sm text-gray-800">
@@ -132,7 +132,7 @@ const ApplicationAction = ({ className, loading, reviewData = [], applicationDat
                   ></span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{item.message}</p>
+              <p className="text-sm text-gray-600 mb-4">{item.description}</p>
 
               {commentInputActiveIndex === index ? (
                 // Comment input box visible for this item
