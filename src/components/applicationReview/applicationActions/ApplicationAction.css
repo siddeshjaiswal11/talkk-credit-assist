@@ -119,41 +119,41 @@
 }
 
 .application-action-cancel-button {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 4px 15px;
+  border-radius: 5px;
   border: 1px solid #0b3e6f;
   color: #0b3e6f;
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 600;
   transition: background-color 0.2s;
 }
 
 .application-action-submit-button {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 4px 15px;
+  border-radius: 5px;
   background-color: #0b3e6f;
-  color: white;
-  font-size: 0.875rem;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
   transition: background-color 0.2s;
 }
 
 .application-action-restrict-button {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 4px 15px;
+  border-radius: 5px;
   background-color: #d50001;
-  color: white;
-  font-size: 0.875rem;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
   transition: background-color 0.2s;
 }
 
 .application-action-proceed-button {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 4px 15px;
+  border-radius: 5px;
   background-color: #399e5a;
-  color: white;
-  font-size: 0.875rem;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
   transition: background-color 0.2s;
 }
