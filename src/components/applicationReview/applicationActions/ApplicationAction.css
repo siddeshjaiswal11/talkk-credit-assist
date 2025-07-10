@@ -1,12 +1,7 @@
 .application-action-container {
-  background-color: white;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid #939393;
   height: calc(100vh - 200px);
 }
 
