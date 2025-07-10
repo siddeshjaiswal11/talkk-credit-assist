@@ -36,7 +36,7 @@
 .application-action-item-title {
   font-size: 0.875rem;
   font-weight: bold;
-  color: #2d3748;
+  color: #000;
 }
 
 .application-action-alert {
@@ -80,7 +80,7 @@
 
 .application-action-message {
   font-size: 0.875rem;
-  color: #718096;
+  color: #3B3B3B;
   margin-bottom: 16px;
   word-break: break-word;
 }
