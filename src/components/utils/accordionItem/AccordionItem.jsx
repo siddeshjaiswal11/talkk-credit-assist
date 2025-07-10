@@ -1,21 +1,17 @@
+import React from "react";
+import "./AccordionItem.css"; // Import the CSS file
+
 const AccordionItem = ({ title, children, isOpen, onClick }) => {
   return (
-    <div className="rounded-lg mb-2 overflow-hidden">
-      <button
-        className="w-full flex justify-between items-center px-2 py-4 bg-[#F9F9F9] focus:outline-none"
-        onClick={onClick}
-      >
-        <span
-          className={`font-semibold text-[#777] ${isOpen ? "text-black" : "text-gray-800"}`}
-        >
+    <div className="accordion-item">
+      <button className="accordion-button" onClick={onClick}>
+        <span className={`accordion-title ${isOpen ? "accordion-title-open" : ""}`}>
           {title
             ?.replace(/_/g, " ") // convert underscores to spaces
-            ?.replace(/\b\w/g, (c) => c.toUpperCase())}{" "}
+            ?.replace(/\b\w/g, (c) => c.toUpperCase())}
         </span>
         <svg
-          className={`w-5 h-5 text-[#777] transform transition-transform duration-200 ${
-            isOpen ? "-rotate-180 text-black" : "-rotate-90 text-gray-800"
-          }`}
+          className={`accordion-icon ${isOpen ? "accordion-icon-open" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -29,7 +25,7 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => {
           ></path>
         </svg>
       </button>
-      {isOpen && <div className="px-2 py-4 bg-[#F9F9F9]">{children}</div>}
+      {isOpen && <div className="accordion-content">{children}</div>}
     </div>
   );
 };
