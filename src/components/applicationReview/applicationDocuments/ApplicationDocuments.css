@@ -1,0 +1,44 @@
+.application-documents-container {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.application-documents-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 16px;
+}
+
+.application-documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 20vh;
+}
+
+.application-documents-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.application-documents-item:hover {
+  background-color: #f7f7f7;
+}
+
+.application-documents-name {
+  flex: 1;
+  color: #4a5568;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,50 @@
+.application-detail-container {
+  background-color: white;
+  border-bottom: 1px solid #c9c9c9;
+  border-radius: 8px 8px 0 0;
+  overflow-y: auto;
+  max-height: 40vh;
+  padding: 16px;
+}
+
+.application-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.application-detail-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.application-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+@media (min-width: 640px) {
+  .application-detail-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+.application-detail-item {
+  margin-right: 8px;
+}
+
+.application-detail-key {
+  color: #718096;
+  text-transform: capitalize;
+}
+
+.application-detail-value {
+  font-weight: 500;
+  color: #1a202c;
+}

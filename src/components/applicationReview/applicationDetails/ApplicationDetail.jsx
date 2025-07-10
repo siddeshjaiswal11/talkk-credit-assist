@@ -1,3 +1,6 @@
+import React from "react";
+import "./ApplicationDetail.css"; // Import the CSS file
+
 const ApplicationDetail = ({ applicationData = {} }) => {
   const loanDetails = {
     customerID: "CUST100477",
@@ -15,23 +18,28 @@ const ApplicationDetail = ({ applicationData = {} }) => {
   console.log("applicationData: ", applicationData);
 
   return (
-    <div className="bg-white rounded-lg overflow-y-auto max-h-[40vh] custom-scrollbar border-b-[1px] border-b-[#c9c9c9] rounded-bl-none rounded-br-none">
-      <div className="flex justify-between items-center">
-        <h2 className="text-lg font-medium text-gray-800 mb-4">
-          Loan Information
-        </h2>
+    <div className="application-detail-container">
+      <div className="application-detail-header">
+        <h2 className="application-detail-title">Loan Information</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-700">
+      <div className="application-detail-grid">
         {Object.entries(applicationData)
-          ?.filter(([key]) => (key !== "documents" && key!== "_id" && key!="application_date" && key!="updated_at" && key!="created_at"))
+          ?.filter(
+            ([key]) =>
+              key !== "documents" &&
+              key !== "_id" &&
+              key !== "application_date" &&
+              key !== "updated_at" &&
+              key !== "created_at"
+          )
           .map(([key, value]) => (
-            <div key={key} className="mr-2">
-              <p className="text-gray-500 capitalize">
+            <div key={key} className="application-detail-item">
+              <p className="application-detail-key">
                 {key
-                  .replace(/_/g, " ")                   // convert underscores to spaces
+                  .replace(/_/g, " ") // convert underscores to spaces
                   .replace(/\b\w/g, (c) => c.toUpperCase())}
               </p>
-              <p className="font-medium text-gray-900">{value}</p>
+              <p className="application-detail-value">{value}</p>
             </div>
           ))}
       </div>
