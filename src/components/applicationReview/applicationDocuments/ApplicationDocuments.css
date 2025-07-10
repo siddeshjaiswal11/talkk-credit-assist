@@ -42,3 +42,20 @@
   color: #4a5568;
   font-size: 0.875rem;
 }
+.smm-check, .smm-cross{
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 6px 6px;
+}
+
+.smm-check {
+    background-color: #20C357;
+}
+.smm-cross {
+    background-color: #D50001;
+}
+.smm-download{
+    color: #0D4A84;
+    font-size: 18px;
+}
