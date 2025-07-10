@@ -22,10 +22,6 @@
   overflow-y: auto;
   margin-bottom: 16px;
   max-height: 30vh;
-
-  &::-webkit-scrollbar {
-    display: none;  
-    }
 }
 
 .application-chatbot-message {
